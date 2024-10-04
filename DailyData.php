@@ -100,7 +100,7 @@
 		// вывести данные за вчера
 
 		function echo_last_daily() {
-			if ($this->load_last_finished_money() !== null) echo 'Прошлый день: ' . htmlspecialchars($this->load_last_daily()) . ' руб.<br>';
+			if ($this->load_last_finished_money() !== null) echo 'Прошлый день: ' . htmlspecialchars($this->load_last_finished_money()) . ' руб.<br>';
 		}
 
 	}  $DailyDataMVC = new DailyData($SQLLoader, $SQLModelSaver, $CurTax, $CurUserSet);
