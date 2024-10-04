@@ -31,15 +31,6 @@
 			$this->SQLSaverUser->pdo->query("INSERT INTO " . $this->TBName . " (_money, _total, _start, _finish) VALUES (0, 0, default, null);");
 		}
 
-		// загрузить данные за вчера по запросу
-
-		function load_last_daily() {
-			$sql = 'SELECT * FROM ' . $this->TBName . ' ORDER BY _start DESC;';
-			$stmt = $this->SQLLoaderUser->pdo->query($sql);
-			$result = $stmt->fetchAll();
-			return $result['1']['_money'];
-		}
-
 		function load_last_finished_money() {
 			$sql = 'SELECT * FROM ' .$this->TBName . ' WHERE `_finish` IS NOT NULL ORDER BY `_start` DESC LIMIT 1;';
 			$stmt = $this->SQLLoaderUser->pdo->query($sql);
