@@ -75,19 +75,9 @@
 		//	Future Model
 		//
 
-		function save_last_daily($day) {
-			$this->close_day($day);
-			$this->open_day();
-		}
-
 		function increase_day($__value__) {
 			$this->day += $__value__;
 			$this->save_cur_day();
-		}
-
-		function end_day() {
-			$this->save_last_daily($this->day);
-			$this->day = 0;
 		}
 
 		//
