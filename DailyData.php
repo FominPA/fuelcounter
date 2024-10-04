@@ -66,6 +66,12 @@
 		//	Future Model
 		//
 
+		// public $day;
+
+		// function load_cur_day_total;
+
+		// function load_last_finished_money;
+
 		function increase_day($__value__) {
 			$this->day += $__value__;
 			$this->save_cur_day();
