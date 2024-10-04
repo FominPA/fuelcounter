@@ -52,12 +52,6 @@
 			return $result['0'];
 		}
 
-		// вывести данные за вчера
-
-		function echo_last_daily() {
-			echo 'Прошлый день: ' . htmlspecialchars($this->load_last_daily()) . ' руб.<br>';
-		}
-
 		// загрузить данные за сегодня
 
 		function load_cur_day() {
@@ -66,12 +60,6 @@
 			$result = $stmt->fetch();
 			$this->day =  $result['_total'];
 		}
-
-		// вывести данные за сегодня
-
-		function echo_cur_day() {
-			echo 'Слито сегодня: ' . htmlspecialchars($this->day) . '<br>';
-		}  
 
 		// сохранить данные за сегодня
 
@@ -90,6 +78,22 @@
 			$this->save_last_daily($this->day);
 			$this->day = 0;
 			// $this->save_cur_day();
+		}
+
+		//
+		//	Future Viewer
+		//
+
+		// вывести данные за сегодня
+
+		function echo_cur_day() {
+			echo 'Слито сегодня: ' . htmlspecialchars($this->day) . '<br>';
+		}  
+
+		// вывести данные за вчера
+
+		function echo_last_daily() {
+			echo 'Прошлый день: ' . htmlspecialchars($this->load_last_daily()) . ' руб.<br>';
 		}
 
 	}  $DailyDataMVC = new DailyData($SQLLoader, $SQLModelSaver, $CurTax, $CurUserSet);
