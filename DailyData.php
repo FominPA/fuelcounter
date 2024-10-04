@@ -87,5 +87,11 @@
 			if ($this->load_last_finished_money() !== null) echo 'Прошлый день: ' . htmlspecialchars($this->load_last_finished_money()) . ' руб.<br>';
 		}
 
+		// Имя водителя
+
+		function echo_driver() {
+			echo "Водитель: " . $this->UserSet->name . "<br>";
+		}
+
 	}  $DailyDataMVC = new DailyData($SQLLoader, $SQLModelSaver, $CurTax, $CurUserSet);
 ?>

@@ -13,7 +13,7 @@
 				if (isset($_POST['end'])) { $this->ScreenController->close();
 					echo("<meta http-equiv='refresh' content='1'>");
 				}
-				echo "Водитель: " . $this->ScreenController->Daily->UserSet->name . "<br>";
+				$this->ScreenController->Daily->echo_driver();
 				$this->ScreenController->Daily->echo_cur_day();
 				$this->ScreenController->Daily->echo_last_daily();
 				$this->ScreenController->Tanks->echo_cur();
