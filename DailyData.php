@@ -45,6 +45,13 @@
 			return $result['1']['_money'];
 		}
 
+		function load_last_finished_money() {
+			$sql = 'SELECT * FROM ' .$this->TBName . ' WHERE `_finish` IS NOT NULL ORDER BY `_start` DESC LIMIT 1;';
+			$stmt = $this->SQLLoaderUser->pdo->query($sql);
+			$result = $stmt->fetch();
+			return $result['_money'];
+		}
+
 		function load_cur_daily() {
 			$sql = 'SELECT * FROM ' . $this->TBName . ' ORDER BY _start DESC;';
 			$stmt = $this->SQLLoaderUser->pdo->query($sql);
@@ -93,7 +100,7 @@
 		// вывести данные за вчера
 
 		function echo_last_daily() {
-			echo 'Прошлый день: ' . htmlspecialchars($this->load_last_daily()) . ' руб.<br>';
+			if ($this->load_last_finished_money() !== null) echo 'Прошлый день: ' . htmlspecialchars($this->load_last_daily()) . ' руб.<br>';
 		}
 
 	}  $DailyDataMVC = new DailyData($SQLLoader, $SQLModelSaver, $CurTax, $CurUserSet);
