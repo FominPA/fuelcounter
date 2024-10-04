@@ -7,7 +7,7 @@
 		public $ScreenState;
 		
 		function __construct(public $ScreenController) {
-			if ($this->ScreenController->Tanks->FTModel->FTFileSystem->load_current_total() !== null)
+			if ($this->ScreenController->if_shift_on())
 				$this->ScreenState = new ShiftOnState($this->ScreenController); 
 			else
 				$this->ScreenState = new ShiftOffState($this->ScreenController);

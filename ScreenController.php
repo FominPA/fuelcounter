@@ -17,6 +17,9 @@
 			$this->Tanks->FTModel->FTFileSystem->close_tank();
 			$this->Daily->close_day($this->Daily->day);
 		}
+
+		function if_shift_on() { return $this->Tanks->FTModel->FTFileSystem->load_current_total() !== null; }
+
 	} $ScreenControllerObj = new ScreenController($DailyDataMVC, $FTViewer);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
