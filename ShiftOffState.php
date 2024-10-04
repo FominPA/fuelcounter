@@ -13,8 +13,7 @@
 		}
 		
 		function echo_view() {
-		    if ($this->ScreenController->Daily->load_cur_daily()['_money'] !== null)
-		    	echo 'Прошлый день: ' . htmlspecialchars($this->ScreenController->Daily->load_cur_daily()['_money']) . ' руб.<br>';
+		    $this->ScreenController->Daily->echo_last_daily();
 			echo <<< END
 <form action="index.php" method="post"><pre>
 <p>Введите количество бензина в начале смены</p>
