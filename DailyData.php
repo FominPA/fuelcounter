@@ -14,7 +14,7 @@
 			public $UserSet
 		) {
 			$this->TBName = $this->UserSet->login . 'DailyData';
-			$this->load_cur_day();
+			$this->day = $this->load_cur_day();
 		}
 
 		function close_day($day) {
@@ -60,7 +60,7 @@
 			$sql = 'SELECT * FROM ' . $this->TBName . ' WHERE _finish IS NULL;';
 			$stmt = $this->SQLLoaderUser->pdo->query($sql);
 			$result = $stmt->fetch();
-			$this->day =  $result['_total'];
+			return $result['_total'];
 		}
 
 		// сохранить данные за сегодня
