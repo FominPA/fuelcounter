@@ -16,11 +16,11 @@
 
 				echo 'Последний бак: ' . htmlspecialchars($this->FTModel->FTFileSystem->load_last_prev()['_total']) . ' л.<br>';
 
-				if ($this->FTModel->FTFileSystem->load_last_prev()['_starting'] != $FULL_TANK_DEFAULT) {
+				if ($this->FTModel->FTFileSystem->load_last_prev()['_starting'] != $this->FULL_TANK_DEFAULT) {
 
 					echo 'До полного бака нужно указать ' . 
 
-					($FULL_TANK_DEFAULT - $this->FTModel->FTFileSystem->load_last_prev()['_starting'] + $this->FTModel->FTFileSystem->load_last_prev()['_total']) . 
+					($this->FULL_TANK_DEFAULT - $this->FTModel->FTFileSystem->load_last_prev()['_starting'] + $this->FTModel->FTFileSystem->load_last_prev()['_total']) . 
 
 					' л.<br>';
 				}
