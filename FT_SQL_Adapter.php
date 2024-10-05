@@ -44,10 +44,10 @@
 		}
 
 		function load_last_prev() {
-			$sql = 'SELECT * FROM ' . $this->TBName . ' ORDER BY _start DESC;';
+			$sql = 'SELECT * FROM ' . $this->TBName . ' WHERE `_finish` IS NOT NULL ORDER BY `_start` DESC LIMIT 1;';
 			$stmt = $this->loader->pdo->query($sql);
-			$result = $stmt->fetchAll();
-			return $result['1'];
+			$result = $stmt->fetch();
+			return $result;
 		}
 
 		function load_list_prevs() {
