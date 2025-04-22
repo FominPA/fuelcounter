@@ -1,4 +1,5 @@
 <?php
+	include_once 'Statistic.php';
     include_once 'ScreenController.php';
 
 	class ShiftOffState implements ScreenStateI {
@@ -18,8 +19,9 @@
 <form action="index.php" method="post"><pre>
 <p>Введите количество бензина в начале смены</p>
 <input type="text" name="residueBefore" placeholder="Остаток..."> <input type="submit" name='send_residueBefore' value="Начать смену">
-</pre></form>
+</pre></form><br/>
 END;
+			// $CurStatistic->echo_all();
 		}
 
 		function echo_screen() { 
