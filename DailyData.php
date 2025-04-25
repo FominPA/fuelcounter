@@ -17,12 +17,12 @@
 			$this->day = $this->load_cur_day();
 		}
 
-		function close_day($day) {
-			$money = $this->CurTax->calc_money($day, 'night');
+		function close_day() {
+			$money = $this->CurTax->calc_money($this->day, 'night');
 
 			$sql = "UPDATE " . $this->TBName . " SET _money = :money , _total = :total WHERE _finish IS NULL;";
 			$stmt = $this->SQLSaverUser->pdo->prepare($sql);
-			$stmt->execute([':money' => $money, ':total' => $day]);
+			$stmt->execute([':money' => $money, ':total' => $this->day]);
 
 			$this->SQLSaverUser->pdo->query("UPDATE " . $this->TBName . " SET _finish = default WHERE _finish IS NULL;");
 		}

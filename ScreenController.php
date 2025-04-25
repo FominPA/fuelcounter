@@ -1,26 +1,24 @@
 <?php
-	include_once 'DailyData.php';
-	include_once 'FT_Viewer.php';
+	include_once 'core.php';
 
 	class ScreenController {
 		function __construct (
-			public $Daily,
-			public $Tanks
+			public $Core
 		) {}
 
 		function open($starting) {
-			$this->Tanks->FTModel->FTFileSystem->open_tank($starting);
-			$this->Daily->open_day();
+			$this->Core->Tanks->FTModel->FTFileSystem->open_tank($starting);
+			$this->Core->Daily->open_day();
 		}
 
 		function close() {
-			$this->Tanks->FTModel->FTFileSystem->close_tank();
-			$this->Daily->close_day($this->Daily->day);
+			$this->Core->Tanks->FTModel->FTFileSystem->close_tank();
+			$this->Core->Daily->close_day();
 		}
 
-		function if_shift_on() { return $this->Tanks->FTModel->FTFileSystem->load_current_total() !== null; }
+		function if_shift_on() { return $this->Core->Tanks->FTModel->FTFileSystem->load_current_total() !== null; }
 
-	} $ScreenControllerObj = new ScreenController($DailyDataMVC, $FTViewer);
+	} $ScreenControllerObj = new ScreenController($Core);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

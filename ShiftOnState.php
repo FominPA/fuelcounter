@@ -6,18 +6,18 @@
 		function __construct (public $ScreenController) {}
 
 		function echo_controller() {
-				if (isset($_POST['residue']) && isset($_POST['send_residue'])) { $this->ScreenController->Tanks->FTModel->residue($_POST['residue']); }
-				if (isset($_POST['add']) && isset($_POST['send_add'])) { $this->ScreenController->Tanks->FTModel->add($_POST['add']); }
-				if (isset($_POST['sub']) && isset($_POST['send_sub'])) { $this->ScreenController->Tanks->FTModel->sub($_POST['sub']); }
-				if (isset($_POST['end_tank'])) { $this->ScreenController->Tanks->FTModel->end_tank(); }
+				if (isset($_POST['residue']) && isset($_POST['send_residue'])) { $this->ScreenController->Core->Tanks->FTModel->residue($_POST['residue']); }
+				if (isset($_POST['add']) && isset($_POST['send_add'])) { $this->ScreenController->Core->Tanks->FTModel->add($_POST['add']); }
+				if (isset($_POST['sub']) && isset($_POST['send_sub'])) { $this->ScreenController->Core->Tanks->FTModel->sub($_POST['sub']); }
+				if (isset($_POST['end_tank'])) { $this->ScreenController->Core->Tanks->FTModel->end_tank(); }
 				if (isset($_POST['end'])) { $this->ScreenController->close();
 					echo("<meta http-equiv='refresh' content='1'>");
 				}
-				$this->ScreenController->Daily->echo_driver();
-				$this->ScreenController->Daily->echo_cur_day();
-				$this->ScreenController->Daily->echo_last_daily();
-				$this->ScreenController->Tanks->echo_cur();
-				$this->ScreenController->Tanks->echo_prev();
+				$this->ScreenController->Core->Daily->echo_driver();
+				$this->ScreenController->Core->Daily->echo_cur_day();
+				$this->ScreenController->Core->Daily->echo_last_daily();
+				$this->ScreenController->Core->Tanks->echo_cur();
+				$this->ScreenController->Core->Tanks->echo_prev();
 		}
 
 		function echo_view() {
