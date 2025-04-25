@@ -53,7 +53,7 @@
 			$month = substr($row['_finish'], 5, 2);
 			$day = substr($row['_finish'], 8, 2);
 			$date = sprintf('%s.%s', $day, $month);
-			$money = sprintf('%.2f руб.', $row['_money']);
+			$money = sprintf('%.2f ₽', $row['_money']);
 			$percent = 100 - (int) ($row['_money'] / $max * 100.00);
 
 			echo <<< _END
