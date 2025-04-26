@@ -68,6 +68,8 @@
 		function echo_last_seven () {
 			$query = "SELECT _money, _finish FROM " . $this->user->login . "DailyData ORDER BY _finish DESC LIMIT 7";
 			$result = $this->pdouser->pdo->query($query)->fetchall();
+			
+			$this->echo_pr_Styles();
 
 			$max = 0;
 
@@ -162,7 +164,7 @@
 					echo "</div><div class='week'>";
 				} 
 			}
-			echo "</div></div>"
+			echo "</div></div>";
 		}
 
 		function echo_view() { $this->echo_month(); }
@@ -226,7 +228,7 @@
 			foreach ($result as $row) $this->echo_progress_bar($row, $max);
  		}
 
- 		function echo_view() { $this->echo_last_six() }
+ 		function echo_view() { $this->echo_last_six(); }
  	}
 
  	#####################################################################################################################
@@ -250,11 +252,11 @@
  		}
 
  		function get_state() { return $this->pdo->query('SELECT * FROM FCUsers WHERE login = ' . $this->login)->fetch()['statstate']; }
- 		function echo_controller() { if (isset($_GET['statstate']) { $this->set_state($_GET['statstate']); } }
+ 		function echo_controller() { if (isset($_GET['statstate'])) { $this->set_state($_GET['statstate']); } }
 
- 		function echo_bar {
+ 		function echo_bar() {
  			echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">График</a>Календарь</a>';
- 			switch ($StatState) {
+ 			switch ($this->get_state()) {
  				case 'graph':
  					$StatViewer = new GraphViewer($this->login, $this->pdo);
  					$StatViewer->echo_view();
