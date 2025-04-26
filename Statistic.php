@@ -222,8 +222,8 @@
 			_END;
 		}
 
- 		function echo_last_six () {
- 			$query = "SELECT _money, _finish FROM " . $this->login . "DailyData ORDER BY _finish DESC LIMIT 6";
+ 		function echo_last_N ($N) {
+ 			$query = "SELECT _money, _finish FROM " . $this->login . "DailyData ORDER BY _finish DESC LIMIT " . $N;
 			$result = $this->pdo->query($query)->fetchall();
 			$max = 0;
 			foreach ($result as $row) {if ($row['_money'] > $max) $max = $row['_money']; }
@@ -231,7 +231,7 @@
 			foreach ($result as $row) $this->echo_progress_bar($row, $max);
  		}
 
- 		function echo_view() { $this->echo_last_six(); }
+ 		function echo_view() { $this->echo_last_N(8); }
  	}
 
  	#####################################################################################################################
