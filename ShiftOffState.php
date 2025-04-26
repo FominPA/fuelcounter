@@ -20,7 +20,7 @@
 <input type="text" name="residueBefore" placeholder="Остаток..."> <input type="submit" name='send_residueBefore' value="Начать смену">
 </pre></form><br/>
 END;
-			$this->ScreenController->Core->Stat->echo_all();
+			$this->ScreenController->Core->Stat->echo_screen();
 		}
 
 		function echo_screen() { 

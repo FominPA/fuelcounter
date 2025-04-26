@@ -11,5 +11,5 @@
 		) {}
 	} 
 
-	$Core = new Core($DailyDataMVC, $FTViewer, $CurStatistic);
+	$Core = new Core($DailyDataMVC, $FTViewer, $CurStat);
 ?>

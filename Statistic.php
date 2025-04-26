@@ -88,7 +88,7 @@
 		) {}
 
 		function get_all () {
-			$result = $this->pdo->query('SELECT * FROM' . $this->login . 'DailyData ORDER BY _finish')->fetchall();
+			$result = $this->pdo->query('SELECT * FROM ' . $this->login . 'DailyData ORDER BY _finish')->fetchall();
 			$money = null;
 			foreach ($result as $row) {
 				$month = (int) substr($row['_finish'], 5, 2);
@@ -153,6 +153,8 @@
 				$day <= $monthMax[$month];
 				$day++, $dotw++
 			) {
+			    $value = $money[$month][$day];
+			    $value = ($value === null) ? 0 : $value;
 				echo <<< END
 					<div class='day'>
 						<div class='dayHeader'>$day</div>
@@ -167,7 +169,7 @@
 			echo "</div></div>";
 		}
 
-		function echo_view() { $this->echo_month(); }
+		function echo_view() { $this->echo_month(4); }
 	}
 
  	#####################################################################################################################
@@ -178,7 +180,7 @@
  			private $pdo,
  		) {}
 
- 		function echo_pr_Styles() {
+ 		function echo_styles() {
 			echo <<< _END
 			<style>
 				.prbar {
@@ -225,6 +227,7 @@
 			$result = $this->pdo->query($query)->fetchall();
 			$max = 0;
 			foreach ($result as $row) {if ($row['_money'] > $max) $max = $row['_money']; }
+			$this->echo_styles();
 			foreach ($result as $row) $this->echo_progress_bar($row, $max);
  		}
 
@@ -247,15 +250,16 @@
  		) {}
 
  		function set_state($state) { 
- 			$this->pdo->query('UPDATE FCUsers SET statstate = ' . $state . ' WHERE login = ' . $this->login); 
-            echo("<meta http-equiv='refresh' content='1'>");
+ 			$this->pdo->query('UPDATE FCUsers SET statstate = "' . $state . '" WHERE login = "' . $this->login . '"'); 
+            # echo("<meta http-equiv='refresh' content='1'>");
  		}
 
- 		function get_state() { return $this->pdo->query('SELECT * FROM FCUsers WHERE login = ' . $this->login)->fetch()['statstate']; }
+ 		function get_state() { return $this->pdo->query("SELECT * FROM FCUsers WHERE login = '" . $this->login . "'")->fetch()['statstate']; }
  		function echo_controller() { if (isset($_GET['statstate'])) { $this->set_state($_GET['statstate']); } }
 
- 		function echo_bar() {
- 			echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">График</a>Календарь</a>';
+ 		function echo_screen() {
+ 		    $this->echo_controller();
+ 			echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">Календарь</a> <br/>';
  			switch ($this->get_state()) {
  				case 'graph':
  					$StatViewer = new GraphViewer($this->login, $this->pdo);
@@ -274,5 +278,5 @@
 
  			$StatViewer->echo_screen();
  		}
- 	}
+ 	} $CurStat = new StatController($CurUserSet->login, $SQLLoader->pdo);
 ?>
