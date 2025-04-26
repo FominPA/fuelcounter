@@ -11,8 +11,8 @@
 			echo <<< _END
 			<style>
 				.prbar {
-					background-color: #66ff00;
-					border: 1px solid #66ff00;
+					background-color: #4CAF50;
+					border: 1px solid #4CAF50;
 					height: 100px;
 					width: 7px;
 					margin: auto;
