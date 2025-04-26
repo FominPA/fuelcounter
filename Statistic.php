@@ -23,8 +23,6 @@
 			echo <<< END
 			<style>
 				.statTabs {
-					border-bottom: 2px solid #4CAF50;
-					margin-bottom: 5px;
 					display: inline-block;
 				}
 
@@ -48,6 +46,12 @@
 					color: #E8F5E9;
 					background-color: #4CAF50;
 				}
+
+				.statContent {
+					padding-top: 5px;
+					border: 2px solid #4CAF50;
+					display: inline-block;
+				}
 			</style>
 
 
@@ -62,11 +66,16 @@
 		    $this->echo_controller();
 			// echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">Календарь</a> <br/>';
 			$this->echo_tabs();
+
+			echo '<div class="statContent">';
+
 			switch ($this->get_state()) {
 				case 'graph': $StatViewer = new GraphViewer($this->login, $this->pdo); break;
 				case 'month': $StatViewer = new MonthViewer($this->login, $this->pdo); break; 
 				default: $this->set_state('graph'); break;
 			} $StatViewer->view();
+
+			echo '</div>';
 		}
 	} $CurStat = new StatController($CurUserSet->login, $SQLLoader->pdo);
 ?>
