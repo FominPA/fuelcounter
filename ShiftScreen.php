@@ -1,12 +1,12 @@
 <?php
 	include_once 'core.php';
 	include_once 'iScreen.php';
-	include_once 'ShiftOnState.php';
-	include_once 'ShiftOffState.php';
+	include_once 'ShiftOn.php';
+	include_once 'ShiftOff.php';
 
 	class ShiftScreen implements iScreen {
 
-		function (private $Core) {}
+		function __construct (private $Core) {}
 
 		function is_on() { return $this->Core->Tanks->FTModel->FTFileSystem->load_current_total() !== null; }
 

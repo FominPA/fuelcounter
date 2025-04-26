@@ -24,7 +24,7 @@
 <input type="text" name="residueBefore" placeholder="Остаток..."> <input type="submit" name='send_residueBefore' value="Начать смену">
 </pre></form><br/>
 END;
-			$this->ScreenController->Core->Stat->view();
+			$this->Core->Stat->view();
 		}
 	}
 ?>
