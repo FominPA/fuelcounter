@@ -7,8 +7,8 @@
 </head>
 <body>
 <?php
-	include_once 'ScreenViewer.php';
-	$ScreenViewerObj->echo_screen();
+	include_once 'ShiftScreen.php';
+	$ShiftViewer->view();
 ?>
 </body>
 </html>

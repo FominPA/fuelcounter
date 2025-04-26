@@ -1,10 +1,11 @@
 <?php
+	include_once 'iScreen.php';
 	include_once 'UserSet.php';
 	include_once 'SQLPublicRoots.php';
 	include_once 'GraphViewer.php';
 	include_once 'MonthViewer.php';
 
-	class StatController {
+	class StatController implements iScreen {
 
 		function __construct (
 			private $login,
@@ -62,7 +63,8 @@
 			END;
 		}
 
-		function echo_screen() {
+		function view() {
+			echo '<div class="stat">';
 		    $this->echo_controller();
 			// echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">Календарь</a> <br/>';
 			$this->echo_tabs();
@@ -75,7 +77,7 @@
 				default: $this->set_state('graph'); break;
 			} $StatViewer->view();
 
-			echo '</div>';
+			echo '</div></div>';
 		}
 	} $CurStat = new StatController($CurUserSet->login, $SQLLoader->pdo);
 ?>

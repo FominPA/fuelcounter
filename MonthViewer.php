@@ -1,6 +1,4 @@
-<?php
-	include_once 'iScreen.php';
-	
+<?php	
 	class MonthViewer implements iScreen {
 		function __construct (
 			private $login,

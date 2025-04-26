@@ -1,6 +1,4 @@
 <?php
-	include_once 'iScreen.php';
-
 	class GraphViewer implements iScreen {
 		function __construct (
 			private $login,
