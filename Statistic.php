@@ -22,22 +22,10 @@
 		    $this->echo_controller();
 			echo '<a href="?statstate=graph">График</a> | <a href="?statstate=month">Календарь</a> <br/>';
 			switch ($this->get_state()) {
-				case 'graph':
-					$StatViewer = new GraphViewer($this->login, $this->pdo);
-					$StatViewer->view();
-					break;
-
-				case 'month':
-					$StatViewer = new MonthViewer($this->login, $this->pdo);
-					$StatViewer->view();
-					break;
-				
-				default:
-					$this->set_state('graph');
-					break;
-			}
-
-			$StatViewer->echo_screen();
+				case 'graph': $StatViewer = new GraphViewer($this->login, $this->pdo); break;
+				case 'month': $StatViewer = new MonthViewer($this->login, $this->pdo); break; 
+				default: $this->set_state('graph'); break;
+			} $StatViewer->view();
 		}
 	} $CurStat = new StatController($CurUserSet->login, $SQLLoader->pdo);
 ?>
